@@ -255,6 +255,7 @@ class GameView {
 
   #addHandlerSelectCard() {
     this.showCardsSection.addEventListener("click", (e) => {
+      e.preventDefault();
       const card = e.target.closest(".show-cards-card");
       if (!card) return;
 
@@ -264,6 +265,7 @@ class GameView {
 
   addHandlerShowCardsBtn(handler) {
     this.gameBoard.addEventListener("click", (e) => {
+      e.preventDefault();
       const name = e.target.closest(".player")?.dataset.name;
       if (!name || !e.target.classList.contains("player-show-btn")) return;
 
@@ -273,7 +275,8 @@ class GameView {
   }
 
   addHandlerHideShowCards(handler) {
-    this.#overlay.addEventListener("click", () => {
+    this.#overlay.addEventListener("click", (e) => {
+      e.preventDefault();
       this.#overlay.classList.add("hidden");
       handler();
     });
