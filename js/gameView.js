@@ -243,7 +243,7 @@ class GameView {
         player.bet;
     });
 
-    this.#potAmount.textContent = pot;
+    this.#potAmount.textContent = `$${pot}`;
   }
 
   discard(player) {
@@ -291,6 +291,7 @@ class GameView {
 
   addHandlerBetBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("bet-btn")) return;
       const bet = this.#betSlider.value;
       handler(bet);
@@ -299,6 +300,7 @@ class GameView {
 
   addHandlerFoldBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("fold-btn")) return;
 
       handler();
@@ -307,6 +309,7 @@ class GameView {
 
   addHandlerCheckBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("check-btn")) return;
 
       handler();
@@ -315,6 +318,7 @@ class GameView {
 
   addHandlerRaiseBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("raise-btn")) return;
 
       const raise = this.#betSlider.value;
@@ -324,6 +328,7 @@ class GameView {
 
   addHandlerCallBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("call-btn")) return;
 
       handler();
@@ -332,6 +337,7 @@ class GameView {
 
   addHandlerDiscardBtn(handler) {
     this.showCardsSection.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("discard-btn")) return;
       const discardCards = this.#getDiscardCards();
       handler(discardCards);
@@ -340,6 +346,7 @@ class GameView {
 
   addHandlerDoneBtn(handler) {
     this.showCardsSection.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("done-btn")) return;
 
       handler();
@@ -348,6 +355,7 @@ class GameView {
 
   addHandlerDealBtn(handler) {
     this.#actionBox.addEventListener("click", (e) => {
+      e.preventDefault();
       if (!e.target.classList.contains("deal-btn")) return;
 
       handler();
