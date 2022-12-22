@@ -46,7 +46,6 @@ class GameView {
     this.#betSlider.setAttribute("value", game.state.highBet);
     this.#sliderNum.value = game.state.highBet;
     this.#betSlider.focus();
-    console.log(this.#betSlider);
   }
 
   #setBetState() {

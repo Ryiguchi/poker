@@ -128,7 +128,6 @@ export default class Game {
   }
 
   #anteUp() {
-    console.log(this.#playerToTheRight());
     this.#logBet(this.state.minBet, this.dealer.players[this.state.bigBlind]);
     this.#logBet(this.state.minBet / 2, this.#playerToTheRight());
     this.state.turn = this.#playerToLeftIndex(this.state.bigBlind);
@@ -331,13 +330,10 @@ export default class Game {
   #calcWinningHand() {
     const solvedHands = [];
     this.#convertToEval();
-    console.log(this.dealer.players);
     this.getActivePlayers().forEach((p) => {
       solvedHands.push(Hand.solve(p.evalHand));
     });
-    console.log(solvedHands);
     const winner = Hand.winners(solvedHands);
-    console.log(winner);
     this.state.winningHand = winner[0].name;
     const index = this.#findWinnerIndex(winner);
     this.state.winner = this.dealer.players[index];
@@ -357,7 +353,6 @@ export default class Game {
     player.bet = "FOLD";
     player.playing = false;
     this.#changeTurn("fold");
-    console.log(this.state.turn);
   }
 
   check() {

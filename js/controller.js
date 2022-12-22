@@ -56,7 +56,6 @@ const controlBetBtn = function (bet) {
 };
 
 const controlWinner = function () {
-  console.log("controlWinner");
   gameView.setWinnerMessage(
     game.state.winner.name,
     game.state.pot,
@@ -78,7 +77,6 @@ const controlFoldBtn = function () {
 const controlCheckBtn = function () {
   if (game.state.gameState !== "bet") return;
   game.check();
-  console.log(game.state.gameState);
   game.state.gameState === "end-call"
     ? controlWinner()
     : gameView.displayBettingState(game.state.gameState, game);
@@ -120,7 +118,7 @@ const controlSlider = function () {
 
 const controlDealBtn = function () {
   game.startNewHand();
-  gameView.hideCards();
+  gameView.renderGameBoard(game.dealer.players);
   gameView.displayBettingState(game.state.gameState, game);
 };
 
