@@ -55,6 +55,7 @@ class Player {
     this.bet = 0;
     this.playing = true;
     this.evalHand = [];
+    this.bigBlind = false;
   }
 }
 
@@ -66,7 +67,6 @@ class Dealer {
 
   createPlayers(players) {
     players.forEach((p) => this.players.push(new Player(p, STARTING_CHIPS)));
-    this.players[0].bigBlind = true;
   }
 
   dealCards() {
@@ -399,6 +399,7 @@ export default class Game {
     this.#setPlayersToPlaying();
     this.dealer.dealCards();
     this.state.gameState = "bet";
+    this.dealer.players[0].bigBlind = true;
     this.#anteUp();
   }
 }
