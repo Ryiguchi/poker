@@ -263,7 +263,7 @@ class GameView {
   }
 
   addHandlerShowCardsBtn(handler) {
-    this.gameBoard.addEventListener("mousedown", (e) => {
+    this.gameBoard.addEventListener("click", (e) => {
       const name = e.target.closest(".player")?.dataset.name;
       if (!name || !e.target.classList.contains("player-show-btn")) return;
 
@@ -273,7 +273,7 @@ class GameView {
   }
 
   addHandlerHideShowCards(handler) {
-    this.#overlay.addEventListener("mouseup", () => {
+    this.#overlay.addEventListener("click", () => {
       this.#overlay.classList.add("hidden");
       handler();
     });
