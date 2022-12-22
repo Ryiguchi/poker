@@ -18,7 +18,7 @@ class setupView {
       markup += `
         <div class="player-name-container">
           <label for="player-${i}-name" class="player-name-label"
-            >Player${i}'s name:</label
+            >Player${i}:</label
           >
           <input
             class="start-screen-input player-name-input"

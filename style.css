@@ -459,6 +459,19 @@ input:focus {
 }
 /* 550px */
 @media (max-width: 34.375em) {
+  .start-screen {
+    font-size: 2rem;
+    width: 90vw;
+  }
+
+  .start-screen-input {
+    font-size: 2rem;
+  }
+
+  .player-name-section {
+    gap: 1rem;
+  }
+
   .game-container {
     display: grid;
     grid-template-columns: 1fr;
