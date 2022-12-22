@@ -57,6 +57,7 @@ input:focus {
 
 .player-name-container {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -466,7 +467,16 @@ input:focus {
   }
 
   .start-screen-input {
-    font-size: 2rem;
+    width: 60%;
+    height: 4rem;
+  }
+
+  .num-players-input {
+    width: 6rem;
+  }
+
+  .start-game-btn {
+    height: 4rem;
   }
 
   .player-name-section {
