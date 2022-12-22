@@ -1,0 +1,574 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Sans Serif";
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: green;
+}
+
+/* Start Screen */
+
+input:focus {
+  outline: 3px solid rgb(6, 63, 6);
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2rem;
+  color: rgb(6, 63, 6);
+  background-color: rgb(203, 243, 203);
+  border: 3px solid rgb(6, 63, 6);
+  border-radius: 5px;
+  box-shadow: -0.5rem 0.5rem 4rem rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  width: 50rem;
+  margin: 15rem auto;
+}
+
+.start-screen-input {
+  color: rgb(6, 63, 6);
+  border: 1px solid rgb(6, 63, 6);
+  border-radius: 3px;
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0.8rem;
+  font-size: 1.6rem;
+}
+
+.num-players-input {
+  width: 5rem;
+}
+
+.player-name-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.player-name-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.start-game-btn {
+  align-self: center;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  color: rgb(203, 243, 203);
+  background-color: rgb(6, 63, 6);
+  box-shadow: -0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+  width: fit-content;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.start-game-btn:hover {
+  color: rgb(6, 63, 6);
+  background-color: rgb(203, 243, 203);
+  box-shadow: inset 1px 1px 1px rgb(6, 63, 6), inset -1px -1px 1px rgb(6, 63, 6),
+    -0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+/* GAME SECTION */
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: 10rem minmax(1fr, 50rem) 10rem; */
+  grid-template-rows: 1fr auto auto auto 1fr;
+  grid-template-areas:
+    ". g3 ."
+    ". c ."
+    "g2 d g4"
+    ". d ."
+    ". g1 .";
+  row-gap: 0.8rem;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 1.6rem;
+}
+
+/* active */
+.grid-area-1 {
+  grid-area: g1;
+}
+
+.grid-area-2 {
+  grid-area: g2;
+  transform: rotate(90deg);
+}
+
+.grid-area-3 {
+  grid-area: g3;
+}
+
+.grid-area-4 {
+  grid-area: g4;
+  transform: rotate(270deg);
+}
+
+.player {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  border: 2px solid rgb(203, 243, 203);
+  border-radius: 10px;
+  background-color: rgb(6, 63, 6);
+  box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  justify-self: center;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.8rem;
+  opacity: 0.6;
+  transition: all 0.5s;
+}
+
+.active {
+  opacity: 1;
+}
+
+.player-name,
+.player-chips,
+.player-bet {
+  font-size: 1.6rem;
+  color: rgb(203, 243, 203);
+  border: 2px solid rgb(203, 243, 203);
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+  width: 10rem;
+}
+
+.player-show-btn {
+  background-color: rgb(203, 243, 203);
+  color: rgb(6, 63, 6);
+}
+
+.player-show-btn:hover {
+  background-color: rgb(6, 63, 6);
+  color: rgb(203, 243, 203);
+  box-shadow: inset 2px 2px 0 rgb(203, 243, 203),
+    inset -2px -2px 0 rgb(203, 243, 203);
+}
+
+.pot-section {
+  grid-area: c;
+  justify-self: center;
+  font-weight: 700;
+  font-size: 2rem;
+  color: rgb(6, 63, 6);
+  background-color: rgb(203, 243, 203);
+  border: 3px solid rgb(6, 63, 6);
+  box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+
+  border-radius: 5px;
+  padding: 2rem;
+  width: fit-content;
+}
+
+/* MESSAGE SECTION */
+.messsage-section {
+  grid-area: d;
+  justify-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+
+  background-color: rgb(203, 243, 203);
+  box-shadow: -0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  border: 3px solid rgb(6, 63, 6);
+  border-radius: 5px;
+  padding: 2rem;
+  width: fit-content;
+}
+
+.message_text {
+  font-size: 1.8rem;
+}
+
+.message-action-box {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.message-action-box button,
+.player-show-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 1.6rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  width: 25%;
+}
+
+.player-show-btn {
+  width: 10rem;
+}
+
+.message-action-box button {
+  width: 12rem;
+  color: rgb(203, 243, 203);
+  background-color: rgb(6, 63, 6);
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.message-action-box button:hover {
+  color: rgb(6, 63, 6);
+  background-color: rgb(203, 243, 203);
+  box-shadow: inset 2px 2px 0 rgb(6, 63, 6), inset -2px -2px 0 rgb(6, 63, 6),
+    -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  cursor: pointer;
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.slider-num {
+  font-size: 1.6rem;
+  padding: 0.4rem 0.8rem;
+  width: 8rem;
+  border: 2px solid rgb(6, 63, 6);
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+/* show cards section */
+
+.show-cards-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 5rem auto;
+  background-color: rgb(6, 63, 6);
+  border-radius: 10px;
+  padding: 1rem;
+  width: fit-content;
+  box-shadow: -1rem 1rem 4rem rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.show-cards-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.show-cards-name,
+.discard-btn,
+.done-btn {
+  background-color: rgb(203, 243, 203);
+  border: none;
+  border-radius: 5px;
+  width: 12rem;
+  font-size: 2.4rem;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: -1rem 1rem 2rem rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.discard-btn:hover,
+.done-btn:hover {
+  background-color: rgba(203, 243, 203, 0.555);
+}
+
+.show-cards-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.show-cards-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: rgb(6, 63, 6);
+  width: 15vw;
+  height: calc(15vw * 3 / 2);
+  max-width: 12rem;
+  max-height: calc(12rem * 3 / 2);
+  box-shadow: -1rem 1rem 2rem rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: rgb(203, 243, 203);
+  cursor: pointer;
+}
+
+.discard {
+  background-color: rgba(203, 243, 203, 0.555);
+}
+
+.show-cards-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+/* Show cards at end section */
+.game-end-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 0.8rem;
+  background-color: rgb(6, 63, 6);
+  box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.game-end-name {
+  border-radius: 5px;
+  width: 12rem;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 0.4rem;
+  background-color: rgb(203, 243, 203);
+  box-shadow: -1rem 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.game-end-cards-container {
+  display: flex;
+  width: fit-content;
+  gap: 0.8rem;
+  background-color: rgb(6, 63, 6);
+}
+
+.game-end-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: rgb(6, 63, 6);
+  width: 10vw;
+  height: calc(10vw * 3 / 2);
+  max-width: 6rem;
+  max-height: calc(6rem * 3 / 2);
+  box-shadow: -1rem 1rem 2rem rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: rgb(203, 243, 203);
+  cursor: pointer;
+}
+
+/* media queries */
+@media (max-width: 56.25em) {
+  .game-container {
+    grid-template-columns: 20vw auto 20vw;
+    grid-template-rows: 1fr auto auto auto 1fr;
+  }
+
+  .player-name,
+  .player-chips,
+  .player-bet,
+  .player-show-btn {
+    font-size: 1.2rem;
+    width: 8rem;
+  }
+
+  .messsage-section {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .messsage-section-player-name {
+    font-size: 1.6rem;
+  }
+
+  .message_text {
+    font-size: 1.4rem;
+  }
+
+  .message-action-box {
+    gap: 0.4rem;
+  }
+
+  .message-action-box button {
+    width: 8rem;
+    font-size: 1.2rem;
+  }
+
+  .slider-num {
+    font-size: 1.4rem;
+    width: 6rem;
+  }
+
+  .discard-btn,
+  .done-btn {
+    width: 8rem;
+    font-size: 1.8rem;
+  }
+
+  .show-cards-cards-container {
+    gap: 1rem;
+  }
+
+  .show-cards-card {
+    font-size: 3rem;
+    width: 15vw;
+    height: calc(15vw * 3 / 2);
+    max-width: 8rem;
+    max-height: calc(8rem * 3 / 2);
+  }
+
+  .game-end-name {
+    width: 8rem;
+    font-size: 1.4rem;
+  }
+
+  .game-end-card {
+    font-size: 2rem;
+    width: 10vw;
+    height: calc(10vw * 3 / 2);
+    max-width: 5rem;
+    max-height: calc(5rem * 3 / 2);
+  }
+}
+/* 550px */
+@media (max-width: 34.375em) {
+  .game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas:
+      "g1"
+      "g2"
+      "g3"
+      "g4"
+      "c"
+      "d";
+  }
+
+  .player {
+    width: 28rem;
+  }
+
+  .grid-area-1,
+  .grid-area-2,
+  .grid-area-3,
+  .grid-area-4 {
+    justify-self: left;
+    transform: rotate(0);
+  }
+
+  .player-name,
+  .player-chips,
+  .player-bet,
+  .player-show-btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+
+  .pot-section {
+    margin: 1rem;
+    padding: 1rem 4rem;
+  }
+
+  .messsage-section {
+    gap: 1.2rem;
+    padding: 2rem;
+    width: 32rem;
+  }
+
+  .messsage-section-player-name {
+    font-size: 2rem;
+  }
+
+  .message_text {
+    font-size: 1.8rem;
+  }
+
+  .message-action-box {
+    width: 100%;
+  }
+
+  .message-action-box button {
+    padding: 1rem 1.6rem;
+    font-size: 1.6rem;
+    width: 100%;
+  }
+
+  .slider-num {
+    font-size: 1.6rem;
+    width: 8rem;
+  }
+
+  .active {
+    opacity: 1;
+    width: 100%;
+  }
+
+  .show-cards-section {
+    margin-top: 15rem;
+  }
+
+  .discard-btn,
+  .done-btn,
+  .show-cards-name {
+    width: auto;
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .show-cards-name {
+    font-size: 1.6rem;
+  }
+
+  .show-cards-card {
+    font-size: 2rem;
+  }
+
+  .game-end-section {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .game-end-name {
+    width: 6rem;
+  }
+
+  .game-end-card {
+    font-size: 1.6rem;
+    width: 12vw;
+    height: calc(12vw * 3 / 2);
+  }
+}
+
+/* Hidden */
+.hidden {
+  display: none;
+}

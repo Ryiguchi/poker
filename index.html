@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/pokersolver@2.1.4/pokersolver.min.js"></script>
+    <title>Document</title>
+    <script defer src="./js/controller.js" type="module"></script>
+  </head>
+  <body>
+    <div class="start-screen hidden">
+      <div class="num-players-container">
+        <label for="num-players" class="num-players-label">
+          How many players?
+        </label>
+        <input
+          class="start-screen-input num-players-input"
+          type="number"
+          name="num-players"
+          min="2"
+          max="4"
+          placeholder="2"
+        />
+      </div>
+      <div class="player-name-section">
+      </div>
+      <button class="start-game-btn">Start Game</button>
+    </div>
+    <div class="game-container">
+
+      <section class="pot-section">
+        <div class="pot_amount">Pot: <span>$75</span></div>
+      </section>
+      <section class="messsage-section">
+        <h2 class="messsage-section-player-name"></h2>
+        <div class="message_text">What do you want to do?</div>
+        <div class="message-action-box">
+          <button class="bet-btn action-btn">Bet</button>
+          <button class="raise-btn action-btn">Raise</button>
+          <button class="call-btn action-btn">Call</button>
+          <button class="check-btn action-btn">Check</button>
+          <button class="fold-btn action-btn">Fold</button>
+          <button class="deal-btn action-btn">Deal</button>
+        </div>
+        <div class="slider-container">
+          <input type="range" class="slider" min="0" max="1000" value="0" step="1" />
+          <input type="text" class="slider-num" placeholder="100"></input>
+        </div>
+      </section>
+    </div>
+    <section class="show-cards-section ">
+      <div class="show-cards-section-header">
+
+        <div class="show-cards-name"></div>
+        <div class="show-cards-name-btns-container">
+          <button class="discard-btn">Discard</button>
+          <button class="done-btn">Done</button>
+        </div>
+      </div>
+      <div class="show-cards-cards-container">
+        <div class="player-card card-1 show-cards-card"></div>
+        <div class="player-card card-2 show-cards-card"></div>
+        <div class="player-card card-3 show-cards-card"></div>
+        <div class="player-card card-4 show-cards-card"></div>
+        <div class="player-card card-5 show-cards-card"></div>
+      </div>
+    </section>
+    <div class="show-cards-overlay hidden"></div>
+  </body>
+</html>
