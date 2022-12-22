@@ -280,7 +280,7 @@ class GameView {
   }
 
   addHandlerSlider(handler) {
-    this.#betSlider.addEventListener("change", () => {
+    this.#betSlider.addEventListener("input", () => {
       this.#sliderNum.value = this.#betSlider.value;
       handler();
     });
