@@ -1,11 +1,5 @@
 import { STARTING_CHIPS } from "./config.js";
 
-// const Hand = require("pokersolver").Hand;
-
-var hand1 = Hand.solve(["Ad", "As", "Jc", "Th", "2d", "3c", "Kd"]);
-var hand2 = Hand.solve(["Ad", "As", "Jc", "Th", "2d", "Qs", "Qd"]);
-var winner = Hand.winners([hand1, hand2]); // hand2
-
 class Card {
   constructor(suit, number, value, index) {
     this.suit = suit;
@@ -144,10 +138,6 @@ export default class Game {
   #playerToLeftIndex(i) {
     return i + 1 <= this.dealer.players.length - 1 ? i + 1 : 0;
   }
-
-  // #playerToTheLeft(i) {
-  //   return (this.state.turn = this.#playerToLeftIndex(this.state.bigBlind));
-  // }
 
   #changeGameState() {
     if (this.state.round === 1) this.state.gameState = "discard";
